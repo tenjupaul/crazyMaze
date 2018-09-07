@@ -42,13 +42,13 @@ class gameViewController: UIViewController {
          0,0,0,0,4,0],
         
         [0,1,0,0,0,3,
-         0,5,1,5,4,1,
-         0,5,0,5,4,1,
-         1,5,0,5,1,1,
+         0,5,1,5,4,5,
+         0,5,0,5,4,5,
+         1,5,0,5,1,5,
          0,5,0,4,0,0,
          0,5,1,0,0,0,
          0,5,0,0,0,0,
-         2,5,0,0,0,5]
+         2,5,0,0,0,0]
         
     ]
     
@@ -77,7 +77,7 @@ class gameViewController: UIViewController {
         timerLabel.text = "00:\(seconds)"
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(gameViewController.updateUI), userInfo: nil, repeats: true)
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.setTimer), userInfo: nil, repeats: true)
-        blueTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(gameViewController.changeBlueBlocks), userInfo: nil, repeats: true)
+        blueTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(gameViewController.changeBlueBlocks), userInfo: nil, repeats: true)
         if motionManager.isDeviceMotionAvailable {
             print("We can detect device motion")
             gameDelay = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.startReadingMotionData), userInfo: nil, repeats: false)

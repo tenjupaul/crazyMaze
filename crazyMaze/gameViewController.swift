@@ -36,7 +36,7 @@ class gameViewController: UIViewController {
          0,1,1,1,1,4,
          0,1,0,0,1,0,
          0,1,0,0,1,0,
-         2,1,4,0,1,0,
+         2,1,0,0,1,0,
          0,0,0,0,1,0,
          0,0,0,3,1,0,
          0,0,0,0,4,0],
@@ -318,7 +318,7 @@ class gameViewController: UIViewController {
                             self.tapSound.play()
                         }
                         
-                    } else if self.degrees(mydata.attitude.roll) > 30 && !self.gameOver {
+                    } else if self.degrees(mydata.attitude.roll) > 15 && !self.gameOver {
                         if playerIdx + 1 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 1] == 1 || self.gameMap[self.mapIdx][playerIdx + 1] == 3 || self.gameMap[self.mapIdx][playerIdx + 1] == 4 || self.gameMap[self.mapIdx][playerIdx + 1] == 5 || self.gameMap[self.mapIdx][playerIdx + 1] == 6) && playerIdx % 6 != 5 {
                             
                             if self.gameMap[self.mapIdx][playerIdx + 1] == 3 {

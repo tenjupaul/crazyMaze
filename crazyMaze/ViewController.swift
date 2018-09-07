@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playButtonPressed(_ sender: UIButton) {
+        audio.volume = 0.3
         performSegue(withIdentifier: "playSegue", sender: nil)
     }
     

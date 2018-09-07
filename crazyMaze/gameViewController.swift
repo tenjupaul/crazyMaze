@@ -58,6 +58,7 @@ class gameViewController: UIViewController {
     var seconds: Int = 10
     var changeBlue: Int = 0
     var newLevel: Bool = true
+    var prevNorm: Bool = false
     var initialPitch: Double = 0.0
     var initialRoll: Double = 0.0
     var gameDelay = Timer()
@@ -182,6 +183,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.winAlert()
@@ -192,6 +194,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
@@ -202,6 +205,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
@@ -212,6 +216,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }
@@ -221,6 +226,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = true
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }
@@ -230,6 +236,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }
@@ -244,6 +251,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.winAlert()
@@ -254,6 +262,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
@@ -264,6 +273,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
@@ -274,6 +284,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }
@@ -283,6 +294,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = true
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }
@@ -292,6 +304,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }
@@ -305,6 +318,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.winAlert()
@@ -315,6 +329,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
@@ -325,6 +340,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
@@ -335,6 +351,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }
@@ -344,6 +361,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = true
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }
@@ -353,6 +371,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }
@@ -368,6 +387,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.winAlert()
@@ -378,6 +398,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
@@ -388,6 +409,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
@@ -398,6 +420,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }
@@ -407,6 +430,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = true
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }
@@ -416,6 +440,7 @@ class gameViewController: UIViewController {
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }
+                                self.prevNorm = false
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }

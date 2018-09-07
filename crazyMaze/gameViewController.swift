@@ -216,7 +216,7 @@ class gameViewController: UIViewController {
         //print("updateUI")
         for i in 0..<gameMap[self.mapIdx].count{
             if gameMap[self.mapIdx][i] == 0 {
-                singleGridView[i].backgroundColor = UIColor.black
+                singleGridView[i].backgroundColor = UIColor(patternImage: UIImage(named:"bushes.gif")!)
             } else if gameMap[self.mapIdx][i] == 1 {
                 singleGridView[i].backgroundColor = UIColor.gray
             } else if gameMap[self.mapIdx][i] == 2 {
@@ -224,7 +224,7 @@ class gameViewController: UIViewController {
             } else if gameMap[self.mapIdx][i] == 3 {
                 singleGridView[i].backgroundColor = UIColor.green
             } else if gameMap[self.mapIdx][i] == 4 {
-                singleGridView[i].backgroundColor = UIColor.red
+                singleGridView[i].backgroundColor = UIColor(patternImage: UIImage(named:"fire.gif")!)
             }
         }
     }

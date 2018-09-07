@@ -15,6 +15,7 @@
 		62F9B35D2141DDD500155EB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B35C2141DDD500155EB8 /* Assets.xcassets */; };
 		62F9B3602141DDD500155EB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B35E2141DDD500155EB8 /* LaunchScreen.storyboard */; };
 		62F9B3682141E14500155EB8 /* gameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F9B3672141E14500155EB8 /* gameViewController.swift */; };
+		62F9B36E2142DD0A00155EB8 /* bushes.gif in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B36D2142DD0A00155EB8 /* bushes.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		62F9B35F2141DDD500155EB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62F9B3612141DDD500155EB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62F9B3672141E14500155EB8 /* gameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameViewController.swift; sourceTree = "<group>"; };
+		62F9B36D2142DD0A00155EB8 /* bushes.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bushes.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				62F9B3592141DDD100155EB8 /* crazyMaze.xcdatamodeld */,
 				62F9B3672141E14500155EB8 /* gameViewController.swift */,
 				30F5510F21425F8800E663B1 /* imdabes.mp3 */,
+				62F9B36D2142DD0A00155EB8 /* bushes.gif */,
 			);
 			path = crazyMaze;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62F9B3602141DDD500155EB8 /* LaunchScreen.storyboard in Resources */,
+				62F9B36E2142DD0A00155EB8 /* bushes.gif in Resources */,
 				62F9B35D2141DDD500155EB8 /* Assets.xcassets in Resources */,
 				30F5511021425F8800E663B1 /* imdabes.mp3 in Resources */,
 				62F9B3582141DDD100155EB8 /* Main.storyboard in Resources */,
@@ -298,13 +302,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7KAF5S7P6Y;
+				DEVELOPMENT_TEAM = XDD3J5NMUK;
 				INFOPLIST_FILE = crazyMaze/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kimvyvo.crazyMaze;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tenjupaul.crazyMaze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -316,13 +320,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7KAF5S7P6Y;
+				DEVELOPMENT_TEAM = XDD3J5NMUK;
 				INFOPLIST_FILE = crazyMaze/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kimvyvo.crazyMaze;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tenjupaul.crazyMaze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

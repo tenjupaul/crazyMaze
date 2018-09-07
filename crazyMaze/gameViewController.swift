@@ -62,6 +62,9 @@ class gameViewController: UIViewController {
     var initialRoll: Double = 0.0
     var gameDelay = Timer()
     var tapSound = AVAudioPlayer()
+    var crashSound = AVAudioPlayer()
+    var failSound = AVAudioPlayer()
+    var successSound = AVAudioPlayer()
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -89,6 +92,27 @@ class gameViewController: UIViewController {
         } catch {
             //process error
         }
+        do {
+            let crashSoundPath = Bundle.main.path(forResource: "crash", ofType: "mp3")
+            try crashSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: crashSoundPath!) as URL)
+            crashSound.volume = 0.7
+        } catch {
+            //process error
+        }
+        do {
+            let failSoundPath = Bundle.main.path(forResource: "fail", ofType: "mp3")
+            try failSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: failSoundPath!) as URL)
+            failSound.volume = 0.7
+        } catch {
+            //process error
+        }
+        do {
+            let successSoundPath = Bundle.main.path(forResource: "success", ofType: "mp3")
+            try successSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: successSoundPath!) as URL)
+            successSound.volume = 0.6
+        } catch {
+            //process error
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         newLevel = true
@@ -100,6 +124,7 @@ class gameViewController: UIViewController {
         if seconds == 0 {
             //timerLabel.text = "GAME OVER"
             gameTimer.invalidate()
+            self.failSound.play()
             let alert = UIAlertController(title: "GAME OVER", message: "You idiot!!!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK...", comment: "Default action"), style: .default, handler: nil
             ))
@@ -338,8 +363,9 @@ class gameViewController: UIViewController {
     func winAlert() {
         gameOver = true
         gameTimer.invalidate()
+        self.successSound.play()
         let alert = UIAlertController(title: "YOU WON", message: "You're NOT an idiot!!!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK...", comment: "Default action"), style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("NEXT LEVEL", comment: "Default action"), style: .default, handler: { _ in
             self.mapIdx += 1
             self.gameOver = false
             self.newLevel = true
@@ -356,6 +382,7 @@ class gameViewController: UIViewController {
     func redAlert() {
         gameOver = true
         gameTimer.invalidate()
+        self.crashSound.play()
         let alert = UIAlertController(title: "BOOOOOO", message: "No touching red blocks!!!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Sure...", comment: "Default action"), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)

@@ -487,22 +487,35 @@ class gameViewController: UIViewController {
     @objc func updateUI() {
         //print("updateUI")
         for i in 0..<gameMap[self.mapIdx].count{
+            singleGridView[i].layer.contents = nil
             if gameMap[self.mapIdx][i] == 0 {
-                singleGridView[i].backgroundColor = UIColor.black
+                singleGridView[i].backgroundColor = UIColor(patternImage: UIImage(named:"bushes.gif")!)
             } else if gameMap[self.mapIdx][i] == 1 {
                 singleGridView[i].backgroundColor = UIColor.gray
             } else if gameMap[self.mapIdx][i] == 2 {
-                singleGridView[i].backgroundColor = UIColor.yellow
-            } else if gameMap[self.mapIdx][i] == 3 {
-                singleGridView[i].backgroundColor = UIColor.green
-            } else if gameMap[self.mapIdx][i] == 4 {
-                singleGridView[i].backgroundColor = UIColor.red
-            } else if gameMap[self.mapIdx][i] == 5 {
-                singleGridView[i].backgroundColor = UIColor.blue
-            } else if gameMap[self.mapIdx][i] == 6 {
-                singleGridView[i].backgroundColor = UIColor.cyan
-            } else if gameMap[self.mapIdx][i] == 7 {
                 singleGridView[i].backgroundColor = UIColor.gray
+                var ninja = UIImage(named: "ninja.gif")
+                singleGridView[i].layer.contents = ninja?.cgImage
+                //                singleGridView[i].backgroundColor = UIColor(patternImage: UIImage(named:"bushes.gif")!)
+            } else if gameMap[self.mapIdx][i] == 3 {
+                //                singleGridView[i].backgroundColor = UIColor.green
+                var belt = UIImage(named: "yellowbelt.png")
+                singleGridView[i].layer.contents = belt?.cgImage
+            } else if gameMap[self.mapIdx][i] == 8 {
+                singleGridView[i].backgroundColor = UIColor.black
+                var belt = UIImage(named: "redbelt.png")
+                singleGridView[i].layer.contents = belt?.cgImage
+            }
+            else if gameMap[self.mapIdx][i] == 9 {
+                singleGridView[i].backgroundColor = UIColor.white
+                var belt = UIImage(named: "blackbelt.png")
+                singleGridView[i].layer.contents = belt?.cgImage
+            }
+            else if gameMap[self.mapIdx][i] == 4 {
+                //                singleGridView[i].backgroundColor = UIColor(patternImage: UIImage(named:"fire.gif")!)
+                var fire = UIImage(named: "fire.gif")
+                singleGridView[i].layer.contents = fire?.cgImage
+                
             }
         }
     }

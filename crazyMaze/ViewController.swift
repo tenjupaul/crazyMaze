@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             //process error
         }
         audio.numberOfLoops = -1
-        audio.volume = 0.8
+        audio.volume = 1
         audio.play()
     }
     

@@ -80,7 +80,7 @@ class gameViewController: UIViewController {
             print("We cannot detect device motion")
         }
         do {
-            let tapSoundPath = Bundle.main.path(forResource: "keyboard_tap", ofType: "mp3")
+            let tapSoundPath = Bundle.main.path(forResource: "latch_click", ofType: "mp3")
             try tapSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: tapSoundPath!) as URL)
             tapSound.volume = 1
         } catch {

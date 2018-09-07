@@ -77,7 +77,7 @@ class gameViewController: UIViewController {
         timerLabel.text = "00:\(seconds)"
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(gameViewController.updateUI), userInfo: nil, repeats: true)
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.setTimer), userInfo: nil, repeats: true)
-        blueTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(gameViewController.changeBlueBlocks), userInfo: nil, repeats: true)
+        blueTimer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(gameViewController.changeBlueBlocks), userInfo: nil, repeats: true)
         if motionManager.isDeviceMotionAvailable {
             print("We can detect device motion")
             gameDelay = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.startReadingMotionData), userInfo: nil, repeats: false)
@@ -205,6 +205,19 @@ class gameViewController: UIViewController {
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx - 6] == 6 {
+                                self.gameMap[self.mapIdx][playerIdx - 6] = 2
+                                if self.changeBlue % 10 == 0 || self.changeBlue % 10 == 1 || self.changeBlue % 10 == 2 || self.changeBlue % 10 == 3 || self.changeBlue % 10 == 4 {
+                                    self.gameMap[self.mapIdx][playerIdx] = 5
+                                } else {
+                                    self.gameMap[self.mapIdx][playerIdx] = 6
+                                }
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                             }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx - 6] = 2

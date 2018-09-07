@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import AVFoundation
 
 class gameViewController: UIViewController {
     @IBOutlet weak var levelLabel: UILabel!
@@ -58,6 +59,8 @@ class gameViewController: UIViewController {
     var initialPitch: Double = 0.0
     var initialRoll: Double = 0.0
     var gameDelay = Timer()
+    var tapSound = AVAudioPlayer()
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -75,6 +78,13 @@ class gameViewController: UIViewController {
         }
         else {
             print("We cannot detect device motion")
+        }
+        do {
+            let tapSoundPath = Bundle.main.path(forResource: "latch_click", ofType: "mp3")
+            try tapSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: tapSoundPath!) as URL)
+            tapSound.volume = 1
+        } catch {
+            //process error
         }
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -126,16 +136,31 @@ class gameViewController: UIViewController {
                             if self.gameMap[self.mapIdx][playerIdx - 6] == 3 {
                                 self.gameMap[self.mapIdx][playerIdx - 6] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                                 self.winAlert()
                             }
                             else if self.gameMap[self.mapIdx][playerIdx - 6] == 4 {
                                 self.gameMap[self.mapIdx][playerIdx - 6] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                                 self.redAlert()
                             }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx - 6] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                             }
                             
                         }
@@ -145,16 +170,31 @@ class gameViewController: UIViewController {
                             if self.gameMap[self.mapIdx][playerIdx + 6] == 3 {
                                 self.gameMap[self.mapIdx][playerIdx + 6] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                                 self.winAlert()
                             }
                             else if self.gameMap[self.mapIdx][playerIdx + 6] == 4 {
                                 self.gameMap[self.mapIdx][playerIdx + 6] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                                 self.redAlert()
                             }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx + 6] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                             }
                         }
                     }   else if self.degrees(mydata.attitude.roll) < 0 && !self.gameOver {
@@ -163,17 +203,33 @@ class gameViewController: UIViewController {
                             if self.gameMap[self.mapIdx][playerIdx - 1] == 3 {
                                 self.gameMap[self.mapIdx][playerIdx - 1] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                                 self.winAlert()
                             }
                             else if self.gameMap[self.mapIdx][playerIdx - 1] == 4 {
                                 self.gameMap[self.mapIdx][playerIdx - 1] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                                 self.redAlert()
                             }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx - 1] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                             }
+                            self.tapSound.play()
                         }
                         
                     } else if self.degrees(mydata.attitude.roll) > 30 && !self.gameOver {
@@ -182,16 +238,31 @@ class gameViewController: UIViewController {
                             if self.gameMap[self.mapIdx][playerIdx + 1] == 3 {
                                 self.gameMap[self.mapIdx][playerIdx + 1] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                                 self.winAlert()
                             }
                             else if self.gameMap[self.mapIdx][playerIdx + 1] == 4 {
                                 self.gameMap[self.mapIdx][playerIdx + 1] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                                 self.redAlert()
                             }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx + 1] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                             }
                         }
                     }
@@ -227,7 +298,7 @@ class gameViewController: UIViewController {
     func redAlert() {
         gameOver = true
         gameTimer.invalidate()
-        let alert = UIAlertController(title: "BOOOOOOOOOOOOO", message: "No touching red blocks!!!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "BOOOOOO", message: "No touching red blocks!!!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Sure...", comment: "Default action"), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

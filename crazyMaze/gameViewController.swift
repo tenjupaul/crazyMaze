@@ -36,7 +36,7 @@ class gameViewController: UIViewController {
          0,1,1,1,1,4,
          0,1,0,0,1,0,
          0,1,0,0,1,0,
-         2,1,4,0,1,0,
+         2,1,0,0,1,0,
          0,0,0,0,1,0,
          0,0,0,9,1,0,
          0,0,0,0,4,0],
@@ -54,12 +54,17 @@ class gameViewController: UIViewController {
     
     var mapIdx = 0
     var gameTimer = Timer()
+    var blueTimer = Timer()
     var seconds: Int = 10
+    var changeBlue: Int = 0
     var newLevel: Bool = true
     var initialPitch: Double = 0.0
     var initialRoll: Double = 0.0
     var gameDelay = Timer()
     var tapSound = AVAudioPlayer()
+    var crashSound = AVAudioPlayer()
+    var failSound = AVAudioPlayer()
+    var successSound = AVAudioPlayer()
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -72,6 +77,7 @@ class gameViewController: UIViewController {
         timerLabel.text = "00:\(seconds)"
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(gameViewController.updateUI), userInfo: nil, repeats: true)
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.setTimer), userInfo: nil, repeats: true)
+        blueTimer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(gameViewController.changeBlueBlocks), userInfo: nil, repeats: true)
         if motionManager.isDeviceMotionAvailable {
             print("We can detect device motion")
             gameDelay = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.startReadingMotionData), userInfo: nil, repeats: false)
@@ -86,6 +92,27 @@ class gameViewController: UIViewController {
         } catch {
             //process error
         }
+        do {
+            let crashSoundPath = Bundle.main.path(forResource: "crash", ofType: "mp3")
+            try crashSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: crashSoundPath!) as URL)
+            crashSound.volume = 0.7
+        } catch {
+            //process error
+        }
+        do {
+            let failSoundPath = Bundle.main.path(forResource: "fail", ofType: "mp3")
+            try failSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: failSoundPath!) as URL)
+            failSound.volume = 0.7
+        } catch {
+            //process error
+        }
+        do {
+            let successSoundPath = Bundle.main.path(forResource: "success", ofType: "mp3")
+            try successSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: successSoundPath!) as URL)
+            successSound.volume = 0.6
+        } catch {
+            //process error
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         newLevel = true
@@ -97,6 +124,7 @@ class gameViewController: UIViewController {
         if seconds == 0 {
             //timerLabel.text = "GAME OVER"
             gameTimer.invalidate()
+            self.failSound.play()
             let alert = UIAlertController(title: "GAME OVER", message: "You idiot!!!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK...", comment: "Default action"), style: .default, handler: nil
             ))
@@ -111,6 +139,20 @@ class gameViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func changeBlueBlocks() {
+        changeBlue += 1
+        for idx in 0..<gameMap[self.mapIdx].count {
+            if gameMap[self.mapIdx][idx] == 5 || gameMap[self.mapIdx][idx] == 6 {
+                if changeBlue % 10 == 0 || changeBlue % 10 == 1 || changeBlue % 10 == 2 || changeBlue % 10 == 3 || changeBlue % 10 == 4 {
+                    gameMap[self.mapIdx][idx] = 6
+                }
+                else {
+                    gameMap[self.mapIdx][idx] = 5
+                }
+            }
+        }
+    }
+    
     @objc func startReadingMotionData() {
         // set read speed
         motionManager.deviceMotionUpdateInterval = 0.1
@@ -123,7 +165,7 @@ class gameViewController: UIViewController {
                 // print("roll", self.degrees(mydata.attitude.roll)) // -left, +right
                 if let playerIdx = self.gameMap[self.mapIdx].index(of: 2) {
                     
-                // forward backward
+                
                     if self.newLevel == true {
                         self.initialRoll = self.degrees(mydata.attitude.roll)
                         self.initialPitch = self.degrees(mydata.attitude.pitch)
@@ -152,6 +194,34 @@ class gameViewController: UIViewController {
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx - 6] == 5 {
+                                self.gameMap[self.mapIdx][playerIdx - 6] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                                self.redAlert()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx - 6] == 6 {
+                                self.gameMap[self.mapIdx][playerIdx - 6] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx - 6] == 7 {
+                                self.gameMap[self.mapIdx][playerIdx - 6] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                             }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx - 6] = 2
@@ -187,6 +257,34 @@ class gameViewController: UIViewController {
                                 self.tapSound.play()
                                 self.redAlert()
                             }
+                            else if self.gameMap[self.mapIdx][playerIdx + 6] == 5 {
+                                self.gameMap[self.mapIdx][playerIdx + 6] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                                self.redAlert()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx + 6] == 6 {
+                                self.gameMap[self.mapIdx][playerIdx + 6] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx + 6] == 7 {
+                                self.gameMap[self.mapIdx][playerIdx + 6] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                            }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx + 6] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
@@ -219,6 +317,34 @@ class gameViewController: UIViewController {
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx - 1] == 5 {
+                                self.gameMap[self.mapIdx][playerIdx - 1] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                                self.redAlert()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx - 1] == 6 {
+                                self.gameMap[self.mapIdx][playerIdx - 1] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx - 1] == 7 {
+                                self.gameMap[self.mapIdx][playerIdx - 1] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                             }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx - 1] = 2
@@ -255,6 +381,34 @@ class gameViewController: UIViewController {
                                 self.tapSound.play()
                                 self.redAlert()
                             }
+                            else if self.gameMap[self.mapIdx][playerIdx + 1] == 5 {
+                                self.gameMap[self.mapIdx][playerIdx + 1] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 1
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                                self.redAlert()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx + 1] == 6 {
+                                self.gameMap[self.mapIdx][playerIdx + 1] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx + 1] == 7 {
+                                self.gameMap[self.mapIdx][playerIdx + 1] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                            }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx + 1] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
@@ -280,8 +434,9 @@ class gameViewController: UIViewController {
     func winAlert() {
         gameOver = true
         gameTimer.invalidate()
+        self.successSound.play()
         let alert = UIAlertController(title: "YOU WON", message: "You're NOT an idiot!!!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK...", comment: "Default action"), style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("NEXT LEVEL", comment: "Default action"), style: .default, handler: { _ in
             self.mapIdx += 1
             self.gameOver = false
             self.newLevel = true
@@ -298,6 +453,7 @@ class gameViewController: UIViewController {
     func redAlert() {
         gameOver = true
         gameTimer.invalidate()
+        self.crashSound.play()
         let alert = UIAlertController(title: "BOOOOOO", message: "No touching red blocks!!!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Sure...", comment: "Default action"), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)

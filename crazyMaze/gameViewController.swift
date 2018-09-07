@@ -41,14 +41,14 @@ class gameViewController: UIViewController {
          0,0,0,3,1,0,
          0,0,0,0,4,0],
         
-        [0,4,0,0,0,0,
-         0,1,1,1,1,4,
-         0,1,0,0,1,0,
-         0,1,0,0,1,0,
-         2,1,4,0,1,0,
-         0,0,0,0,1,0,
-         0,0,0,3,1,0,
-         0,0,0,0,4,0]
+        [0,0,0,0,0,3,
+         0,1,1,1,0,1,
+         0,1,0,1,5,1,
+         0,1,5,1,1,1,
+         0,1,0,5,0,0,
+         0,1,0,0,0,0,
+         0,1,0,0,0,0,
+         0,2,0,0,0,0]
         
     ]
     
@@ -86,6 +86,9 @@ class gameViewController: UIViewController {
         } catch {
             //process error
         }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        newLevel = true
     }
     @objc func setTimer() {
         //print("start timer")
@@ -127,7 +130,7 @@ class gameViewController: UIViewController {
                         self.newLevel = false
                     }
                     
-                    if self.degrees(mydata.attitude.pitch) < self.initialPitch - 15 && !self.gameOver {
+                    if self.degrees(mydata.attitude.pitch) < 0 && !self.gameOver {
                         if playerIdx - 6 >= 0 && (self.gameMap[self.mapIdx][playerIdx - 6] == 1 || self.gameMap[self.mapIdx][playerIdx - 6] == 3 || self.gameMap[self.mapIdx][playerIdx - 6] == 4) {
                             
                             if self.gameMap[self.mapIdx][playerIdx - 6] == 3 {
@@ -161,7 +164,7 @@ class gameViewController: UIViewController {
                             }
                             
                         }
-                    } else if self.degrees(mydata.attitude.pitch) > self.initialPitch + 15 && !self.gameOver {
+                    } else if self.degrees(mydata.attitude.pitch) > 30 && !self.gameOver {
                         if playerIdx + 6 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 6] == 1 || self.gameMap[self.mapIdx][playerIdx + 6] == 3 || self.gameMap[self.mapIdx][playerIdx + 6] == 4) {
                             
                             if self.gameMap[self.mapIdx][playerIdx + 6] == 3 {
@@ -194,7 +197,7 @@ class gameViewController: UIViewController {
                                 self.tapSound.play()
                             }
                         }
-                    }   else if self.degrees(mydata.attitude.roll) < self.initialRoll - 15 && !self.gameOver {
+                    }   else if self.degrees(mydata.attitude.roll) < 0 && !self.gameOver {
                         if playerIdx - 1 >= 0 && (self.gameMap[self.mapIdx][playerIdx - 1] == 1 || self.gameMap[self.mapIdx][playerIdx - 1] == 3 || self.gameMap[self.mapIdx][playerIdx - 1] == 4) && playerIdx % 6 != 0 {
                             
                             if self.gameMap[self.mapIdx][playerIdx - 1] == 3 {
@@ -229,7 +232,7 @@ class gameViewController: UIViewController {
                             self.tapSound.play()
                         }
                         
-                    } else if self.degrees(mydata.attitude.roll) > self.initialRoll + 15 && !self.gameOver {
+                    } else if self.degrees(mydata.attitude.roll) > 30 && !self.gameOver {
                         if playerIdx + 1 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 1] == 1 || self.gameMap[self.mapIdx][playerIdx + 1] == 3 || self.gameMap[self.mapIdx][playerIdx + 1] == 4) && playerIdx % 6 != 5 {
                             
                             if self.gameMap[self.mapIdx][playerIdx + 1] == 3 {

@@ -39,6 +39,15 @@ class gameViewController: UIViewController {
          2,1,4,0,1,0,
          0,0,0,0,1,0,
          0,0,0,3,1,0,
+         0,0,0,0,4,0],
+        
+        [0,4,0,0,0,0,
+         0,1,1,1,1,4,
+         0,1,0,0,1,0,
+         0,1,0,0,1,0,
+         2,1,4,0,1,0,
+         0,0,0,0,1,0,
+         0,0,0,3,1,0,
          0,0,0,0,4,0]
         
     ]
@@ -46,8 +55,9 @@ class gameViewController: UIViewController {
     var mapIdx = 0
     var gameTimer = Timer()
     var seconds: Int = 10
-    var initialPitch:Double=0.0
-    var initialRoll:Double=0.0
+    var newLevel: Bool = true
+    var initialPitch: Double = 0.0
+    var initialRoll: Double = 0.0
     var gameDelay = Timer()
     var tapSound = AVAudioPlayer()
     
@@ -111,7 +121,13 @@ class gameViewController: UIViewController {
                 if let playerIdx = self.gameMap[self.mapIdx].index(of: 2) {
                     
                 // forward backward
-                    if self.degrees(mydata.attitude.pitch) < 0 && !self.gameOver {
+                    if self.newLevel == true {
+                        self.initialRoll = self.degrees(mydata.attitude.roll)
+                        self.initialPitch = self.degrees(mydata.attitude.pitch)
+                        self.newLevel = false
+                    }
+                    
+                    if self.degrees(mydata.attitude.pitch) < self.initialPitch - 15 && !self.gameOver {
                         if playerIdx - 6 >= 0 && (self.gameMap[self.mapIdx][playerIdx - 6] == 1 || self.gameMap[self.mapIdx][playerIdx - 6] == 3 || self.gameMap[self.mapIdx][playerIdx - 6] == 4) {
                             
                             if self.gameMap[self.mapIdx][playerIdx - 6] == 3 {
@@ -145,7 +161,7 @@ class gameViewController: UIViewController {
                             }
                             
                         }
-                    } else if self.degrees(mydata.attitude.pitch) > 30 && !self.gameOver {
+                    } else if self.degrees(mydata.attitude.pitch) > self.initialPitch + 15 && !self.gameOver {
                         if playerIdx + 6 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 6] == 1 || self.gameMap[self.mapIdx][playerIdx + 6] == 3 || self.gameMap[self.mapIdx][playerIdx + 6] == 4) {
                             
                             if self.gameMap[self.mapIdx][playerIdx + 6] == 3 {
@@ -178,7 +194,7 @@ class gameViewController: UIViewController {
                                 self.tapSound.play()
                             }
                         }
-                    }   else if self.degrees(mydata.attitude.roll) < -15 && !self.gameOver {
+                    }   else if self.degrees(mydata.attitude.roll) < self.initialRoll - 15 && !self.gameOver {
                         if playerIdx - 1 >= 0 && (self.gameMap[self.mapIdx][playerIdx - 1] == 1 || self.gameMap[self.mapIdx][playerIdx - 1] == 3 || self.gameMap[self.mapIdx][playerIdx - 1] == 4) && playerIdx % 6 != 0 {
                             
                             if self.gameMap[self.mapIdx][playerIdx - 1] == 3 {
@@ -213,7 +229,7 @@ class gameViewController: UIViewController {
                             self.tapSound.play()
                         }
                         
-                    } else if self.degrees(mydata.attitude.roll) > 15 && !self.gameOver {
+                    } else if self.degrees(mydata.attitude.roll) > self.initialRoll + 15 && !self.gameOver {
                         if playerIdx + 1 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 1] == 1 || self.gameMap[self.mapIdx][playerIdx + 1] == 3 || self.gameMap[self.mapIdx][playerIdx + 1] == 4) && playerIdx % 6 != 5 {
                             
                             if self.gameMap[self.mapIdx][playerIdx + 1] == 3 {
@@ -265,6 +281,7 @@ class gameViewController: UIViewController {
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK...", comment: "Default action"), style: .default, handler: { _ in
             self.mapIdx += 1
             self.gameOver = false
+            self.newLevel = true
             self.seconds = 10
             self.timerLabel.text = "00:\(self.seconds)"
             self.levelLabel.text = "LVL \(self.mapIdx + 1)"

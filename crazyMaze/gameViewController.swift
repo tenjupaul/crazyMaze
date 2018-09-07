@@ -208,11 +208,7 @@ class gameViewController: UIViewController {
                             }
                             else if self.gameMap[self.mapIdx][playerIdx - 6] == 6 {
                                 self.gameMap[self.mapIdx][playerIdx - 6] = 2
-                                if self.changeBlue % 10 == 0 || self.changeBlue % 10 == 1 || self.changeBlue % 10 == 2 || self.changeBlue % 10 == 3 || self.changeBlue % 10 == 4 {
-                                    self.gameMap[self.mapIdx][playerIdx] = 5
-                                } else {
-                                    self.gameMap[self.mapIdx][playerIdx] = 6
-                                }
+                                self.gameMap[self.mapIdx][playerIdx] = 6
                                 if self.tapSound.isPlaying {
                                     self.tapSound.pause()
                                 }

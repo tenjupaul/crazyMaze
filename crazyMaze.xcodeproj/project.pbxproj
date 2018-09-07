@@ -22,10 +22,10 @@
 		62F9B3842142EF0E00155EB8 /* yellowbelt.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B3832142EF0E00155EB8 /* yellowbelt.png */; };
 		62F9B3882142F22700155EB8 /* redbelt.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B3872142F22700155EB8 /* redbelt.png */; };
 		62F9B38A2142F26F00155EB8 /* blackbelt.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B3892142F26F00155EB8 /* blackbelt.png */; };
-		62F9B38C2142F8F600155EB8 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B38B2142F8F600155EB8 /* success.mp3 */; };
-		62F9B38E2142F91D00155EB8 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B38D2142F91D00155EB8 /* background.mp3 */; };
-		62F9B3902142F92D00155EB8 /* crash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B38F2142F92D00155EB8 /* crash.mp3 */; };
-		62F9B3922142F94200155EB8 /* fail.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B3912142F94200155EB8 /* fail.mp3 */; };
+		D01B1596214301BD00F5ABC9 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D01B1595214301BD00F5ABC9 /* background.mp3 */; };
+		D01B15982143020500F5ABC9 /* crash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D01B15972143020500F5ABC9 /* crash.mp3 */; };
+		D01B159A2143020E00F5ABC9 /* fail.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D01B15992143020E00F5ABC9 /* fail.mp3 */; };
+		D01B159C2143021700F5ABC9 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D01B159B2143021700F5ABC9 /* success.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,10 +46,10 @@
 		62F9B3832142EF0E00155EB8 /* yellowbelt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowbelt.png; sourceTree = "<group>"; };
 		62F9B3872142F22700155EB8 /* redbelt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redbelt.png; sourceTree = "<group>"; };
 		62F9B3892142F26F00155EB8 /* blackbelt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackbelt.png; sourceTree = "<group>"; };
-		62F9B38B2142F8F600155EB8 /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = success.mp3; path = ../../../../../Desktop/success.mp3; sourceTree = "<group>"; };
-		62F9B38D2142F91D00155EB8 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = background.mp3; path = ../../../../../Desktop/background.mp3; sourceTree = "<group>"; };
-		62F9B38F2142F92D00155EB8 /* crash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = crash.mp3; path = ../../../../../Desktop/crash.mp3; sourceTree = "<group>"; };
-		62F9B3912142F94200155EB8 /* fail.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fail.mp3; path = ../../../../../Desktop/fail.mp3; sourceTree = "<group>"; };
+		D01B1595214301BD00F5ABC9 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		D01B15972143020500F5ABC9 /* crash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = crash.mp3; path = ../../../../crash.mp3; sourceTree = "<group>"; };
+		D01B15992143020E00F5ABC9 /* fail.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fail.mp3; path = ../../../../fail.mp3; sourceTree = "<group>"; };
+		D01B159B2143021700F5ABC9 /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = success.mp3; path = ../../../../success.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,11 +94,11 @@
 				62F9B36D2142DD0A00155EB8 /* bushes.gif */,
 				62F9B3812142EAB600155EB8 /* ninja.gif */,
 				62F9B37F2142E87300155EB8 /* fire.gif */,
-				62F9B38B2142F8F600155EB8 /* success.mp3 */,
-				62F9B3912142F94200155EB8 /* fail.mp3 */,
-				62F9B38F2142F92D00155EB8 /* crash.mp3 */,
+				D01B15992143020E00F5ABC9 /* fail.mp3 */,
+				D01B1595214301BD00F5ABC9 /* background.mp3 */,
+				D01B159B2143021700F5ABC9 /* success.mp3 */,
+				D01B15972143020500F5ABC9 /* crash.mp3 */,
 				62F9B3892142F26F00155EB8 /* blackbelt.png */,
-				62F9B38D2142F91D00155EB8 /* background.mp3 */,
 				62F9B3872142F22700155EB8 /* redbelt.png */,
 				62F9B3832142EF0E00155EB8 /* yellowbelt.png */,
 				62F9B3712142DF1700155EB8 /* latch_click.mp3 */,
@@ -169,20 +169,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01B15982143020500F5ABC9 /* crash.mp3 in Resources */,
 				62F9B3842142EF0E00155EB8 /* yellowbelt.png in Resources */,
+				D01B1596214301BD00F5ABC9 /* background.mp3 in Resources */,
 				62F9B3602141DDD500155EB8 /* LaunchScreen.storyboard in Resources */,
-				62F9B3902142F92D00155EB8 /* crash.mp3 in Resources */,
 				62F9B36E2142DD0A00155EB8 /* bushes.gif in Resources */,
 				62F9B35D2141DDD500155EB8 /* Assets.xcassets in Resources */,
 				62F9B3722142DF1700155EB8 /* latch_click.mp3 in Resources */,
+				D01B159C2143021700F5ABC9 /* success.mp3 in Resources */,
 				62F9B3742142DF2200155EB8 /* imdabes.mp3 in Resources */,
-				62F9B38E2142F91D00155EB8 /* background.mp3 in Resources */,
 				62F9B3822142EAB600155EB8 /* ninja.gif in Resources */,
 				62F9B38A2142F26F00155EB8 /* blackbelt.png in Resources */,
+				D01B159A2143020E00F5ABC9 /* fail.mp3 in Resources */,
 				62F9B3802142E87300155EB8 /* fire.gif in Resources */,
-				62F9B3922142F94200155EB8 /* fail.mp3 in Resources */,
 				62F9B3882142F22700155EB8 /* redbelt.png in Resources */,
-				62F9B38C2142F8F600155EB8 /* success.mp3 in Resources */,
 				62F9B3582141DDD100155EB8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -41,12 +41,12 @@ class gameViewController: UIViewController {
          0,0,0,3,1,0,
          0,0,0,0,4,0],
         
-        [0,1,0,0,0,3,
-         0,5,1,5,4,5,
+        [0,7,0,0,0,3,
+         0,5,7,5,4,5,
          0,5,0,5,4,5,
-         1,5,0,5,1,5,
+         7,5,0,5,7,5,
          0,5,0,4,0,0,
-         0,5,1,0,0,0,
+         0,5,7,0,0,0,
          0,5,0,0,0,0,
          2,5,0,0,0,0]
         
@@ -215,6 +215,15 @@ class gameViewController: UIViewController {
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                             }
+                            else if self.gameMap[self.mapIdx][playerIdx - 6] == 7 {
+                                self.gameMap[self.mapIdx][playerIdx - 6] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                            }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx - 6] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
@@ -259,6 +268,24 @@ class gameViewController: UIViewController {
                                 self.tapSound.play()
                                 self.redAlert()
                             }
+                            else if self.gameMap[self.mapIdx][playerIdx + 6] == 6 {
+                                self.gameMap[self.mapIdx][playerIdx + 6] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx + 6] == 7 {
+                                self.gameMap[self.mapIdx][playerIdx + 6] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                            }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx + 6] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
@@ -301,6 +328,24 @@ class gameViewController: UIViewController {
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx - 1] == 6 {
+                                self.gameMap[self.mapIdx][playerIdx - 1] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx - 1] == 7 {
+                                self.gameMap[self.mapIdx][playerIdx - 1] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                             }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx - 1] = 2
@@ -346,6 +391,24 @@ class gameViewController: UIViewController {
                                 self.tapSound.currentTime = 0
                                 self.tapSound.play()
                                 self.redAlert()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx + 1] == 6 {
+                                self.gameMap[self.mapIdx][playerIdx + 1] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
+                            }
+                            else if self.gameMap[self.mapIdx][playerIdx + 1] == 7 {
+                                self.gameMap[self.mapIdx][playerIdx + 1] = 2
+                                self.gameMap[self.mapIdx][playerIdx] = 6
+                                if self.tapSound.isPlaying {
+                                    self.tapSound.pause()
+                                }
+                                self.tapSound.currentTime = 0
+                                self.tapSound.play()
                             }
                             else {
                                 self.gameMap[self.mapIdx][playerIdx + 1] = 2
@@ -414,6 +477,8 @@ class gameViewController: UIViewController {
                 singleGridView[i].backgroundColor = UIColor.blue
             } else if gameMap[self.mapIdx][i] == 6 {
                 singleGridView[i].backgroundColor = UIColor.cyan
+            } else if gameMap[self.mapIdx][i] == 7 {
+                singleGridView[i].backgroundColor = UIColor.gray
             }
         }
     }

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		300437C22142DD7000B3BC43 /* latch_click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 300437C12142DD7000B3BC43 /* latch_click.mp3 */; };
-		300437C42142DD7B00B3BC43 /* imdabes.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 300437C32142DD7B00B3BC43 /* imdabes.mp3 */; };
 		62F9B3532141DDD100155EB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F9B3522141DDD100155EB8 /* AppDelegate.swift */; };
 		62F9B3552141DDD100155EB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F9B3542141DDD100155EB8 /* ViewController.swift */; };
 		62F9B3582141DDD100155EB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B3562141DDD100155EB8 /* Main.storyboard */; };
@@ -17,11 +15,16 @@
 		62F9B3602141DDD500155EB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B35E2141DDD500155EB8 /* LaunchScreen.storyboard */; };
 		62F9B3682141E14500155EB8 /* gameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F9B3672141E14500155EB8 /* gameViewController.swift */; };
 		62F9B36E2142DD0A00155EB8 /* bushes.gif in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B36D2142DD0A00155EB8 /* bushes.gif */; };
+		62F9B3722142DF1700155EB8 /* latch_click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B3712142DF1700155EB8 /* latch_click.mp3 */; };
+		62F9B3742142DF2200155EB8 /* imdabes.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B3732142DF2200155EB8 /* imdabes.mp3 */; };
+		62F9B3802142E87300155EB8 /* fire.gif in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B37F2142E87300155EB8 /* fire.gif */; };
+		62F9B3822142EAB600155EB8 /* ninja.gif in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B3812142EAB600155EB8 /* ninja.gif */; };
+		62F9B3842142EF0E00155EB8 /* yellowbelt.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B3832142EF0E00155EB8 /* yellowbelt.png */; };
+		62F9B3882142F22700155EB8 /* redbelt.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B3872142F22700155EB8 /* redbelt.png */; };
+		62F9B38A2142F26F00155EB8 /* blackbelt.png in Resources */ = {isa = PBXBuildFile; fileRef = 62F9B3892142F26F00155EB8 /* blackbelt.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		300437C12142DD7000B3BC43 /* latch_click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = latch_click.mp3; sourceTree = "<group>"; };
-		300437C32142DD7B00B3BC43 /* imdabes.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = imdabes.mp3; sourceTree = "<group>"; };
 		62F9B34F2141DDD100155EB8 /* crazyMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = crazyMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F9B3522141DDD100155EB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62F9B3542141DDD100155EB8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,6 +35,13 @@
 		62F9B3612141DDD500155EB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62F9B3672141E14500155EB8 /* gameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameViewController.swift; sourceTree = "<group>"; };
 		62F9B36D2142DD0A00155EB8 /* bushes.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bushes.gif; sourceTree = "<group>"; };
+		62F9B3712142DF1700155EB8 /* latch_click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = latch_click.mp3; sourceTree = "<group>"; };
+		62F9B3732142DF2200155EB8 /* imdabes.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = imdabes.mp3; sourceTree = "<group>"; };
+		62F9B37F2142E87300155EB8 /* fire.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = fire.gif; sourceTree = "<group>"; };
+		62F9B3812142EAB600155EB8 /* ninja.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ninja.gif; sourceTree = "<group>"; };
+		62F9B3832142EF0E00155EB8 /* yellowbelt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowbelt.png; sourceTree = "<group>"; };
+		62F9B3872142F22700155EB8 /* redbelt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redbelt.png; sourceTree = "<group>"; };
+		62F9B3892142F26F00155EB8 /* blackbelt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackbelt.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +82,14 @@
 				62F9B3612141DDD500155EB8 /* Info.plist */,
 				62F9B3592141DDD100155EB8 /* crazyMaze.xcdatamodeld */,
 				62F9B3672141E14500155EB8 /* gameViewController.swift */,
-				30F5510F21425F8800E663B1 /* imdabes.mp3 */,
+				62F9B3732142DF2200155EB8 /* imdabes.mp3 */,
 				62F9B36D2142DD0A00155EB8 /* bushes.gif */,
+				62F9B3812142EAB600155EB8 /* ninja.gif */,
+				62F9B37F2142E87300155EB8 /* fire.gif */,
+				62F9B3892142F26F00155EB8 /* blackbelt.png */,
+				62F9B3872142F22700155EB8 /* redbelt.png */,
+				62F9B3832142EF0E00155EB8 /* yellowbelt.png */,
+				62F9B3712142DF1700155EB8 /* latch_click.mp3 */,
 			);
 			path = crazyMaze;
 			sourceTree = "<group>";
@@ -141,11 +157,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62F9B3842142EF0E00155EB8 /* yellowbelt.png in Resources */,
 				62F9B3602141DDD500155EB8 /* LaunchScreen.storyboard in Resources */,
 				62F9B36E2142DD0A00155EB8 /* bushes.gif in Resources */,
 				62F9B35D2141DDD500155EB8 /* Assets.xcassets in Resources */,
-				300437C42142DD7B00B3BC43 /* imdabes.mp3 in Resources */,
-				300437C22142DD7000B3BC43 /* latch_click.mp3 in Resources */,
+				62F9B3722142DF1700155EB8 /* latch_click.mp3 in Resources */,
+				62F9B3742142DF2200155EB8 /* imdabes.mp3 in Resources */,
+				62F9B3822142EAB600155EB8 /* ninja.gif in Resources */,
+				62F9B38A2142F26F00155EB8 /* blackbelt.png in Resources */,
+				62F9B3802142E87300155EB8 /* fire.gif in Resources */,
+				62F9B3882142F22700155EB8 /* redbelt.png in Resources */,
 				62F9B3582141DDD100155EB8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

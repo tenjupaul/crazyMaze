@@ -36,12 +36,12 @@ class gameViewController: UIViewController {
          0,1,1,1,1,4,
          0,1,0,0,1,0,
          0,1,0,0,1,0,
-         2,1,4,0,1,0,
+         2,1,9,0,1,0,
          0,0,0,0,1,0,
-         0,0,0,3,1,0,
+         0,0,0,8,1,0,
          0,0,0,0,4,0],
         
-        [0,0,0,0,0,3,
+        [0,0,0,0,0,9,
          0,1,1,1,0,1,
          0,1,0,1,5,1,
          0,1,5,1,1,1,
@@ -129,11 +129,11 @@ class gameViewController: UIViewController {
                         self.initialPitch = self.degrees(mydata.attitude.pitch)
                         self.newLevel = false
                     }
-                    
+                    var winList = [3,8,9]
                     if self.degrees(mydata.attitude.pitch) < 0 && !self.gameOver {
-                        if playerIdx - 6 >= 0 && (self.gameMap[self.mapIdx][playerIdx - 6] == 1 || self.gameMap[self.mapIdx][playerIdx - 6] == 3 || self.gameMap[self.mapIdx][playerIdx - 6] == 4) {
+                        if playerIdx - 6 >= 0 && (self.gameMap[self.mapIdx][playerIdx - 6] == 1 || winList.contains(self.gameMap[self.mapIdx][playerIdx - 6]) || self.gameMap[self.mapIdx][playerIdx - 6] == 4) {
                             
-                            if self.gameMap[self.mapIdx][playerIdx - 6] == 3 {
+                            if winList.contains(self.gameMap[self.mapIdx][playerIdx - 6]) {
                                 self.gameMap[self.mapIdx][playerIdx - 6] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
                                 if self.tapSound.isPlaying {
@@ -165,9 +165,9 @@ class gameViewController: UIViewController {
                             
                         }
                     } else if self.degrees(mydata.attitude.pitch) > 30 && !self.gameOver {
-                        if playerIdx + 6 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 6] == 1 || self.gameMap[self.mapIdx][playerIdx + 6] == 3 || self.gameMap[self.mapIdx][playerIdx + 6] == 4) {
+                        if playerIdx + 6 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 6] == 1 || winList.contains(self.gameMap[self.mapIdx][playerIdx + 6]) || self.gameMap[self.mapIdx][playerIdx + 6] == 4) {
                             
-                            if self.gameMap[self.mapIdx][playerIdx + 6] == 3 {
+                            if winList.contains(self.gameMap[self.mapIdx][playerIdx + 6]) {
                                 self.gameMap[self.mapIdx][playerIdx + 6] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
                                 if self.tapSound.isPlaying {
@@ -198,9 +198,9 @@ class gameViewController: UIViewController {
                             }
                         }
                     }   else if self.degrees(mydata.attitude.roll) < 0 && !self.gameOver {
-                        if playerIdx - 1 >= 0 && (self.gameMap[self.mapIdx][playerIdx - 1] == 1 || self.gameMap[self.mapIdx][playerIdx - 1] == 3 || self.gameMap[self.mapIdx][playerIdx - 1] == 4) && playerIdx % 6 != 0 {
+                        if playerIdx - 1 >= 0 && (self.gameMap[self.mapIdx][playerIdx - 1] == 1 || winList.contains(self.gameMap[self.mapIdx][playerIdx - 1]) || self.gameMap[self.mapIdx][playerIdx - 1] == 4) && playerIdx % 6 != 0 {
                             
-                            if self.gameMap[self.mapIdx][playerIdx - 1] == 3 {
+                            if winList.contains(self.gameMap[self.mapIdx][playerIdx - 1]){
                                 self.gameMap[self.mapIdx][playerIdx - 1] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
                                 if self.tapSound.isPlaying {
@@ -233,9 +233,9 @@ class gameViewController: UIViewController {
                         }
                         
                     } else if self.degrees(mydata.attitude.roll) > 30 && !self.gameOver {
-                        if playerIdx + 1 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 1] == 1 || self.gameMap[self.mapIdx][playerIdx + 1] == 3 || self.gameMap[self.mapIdx][playerIdx + 1] == 4) && playerIdx % 6 != 5 {
+                        if playerIdx + 1 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 1] == 1 || winList.contains(self.gameMap[self.mapIdx][playerIdx + 1]) || self.gameMap[self.mapIdx][playerIdx + 1] == 4) && playerIdx % 6 != 5 {
                             
-                            if self.gameMap[self.mapIdx][playerIdx + 1] == 3 {
+                            if winList.contains(self.gameMap[self.mapIdx][playerIdx + 1]){
                                 self.gameMap[self.mapIdx][playerIdx + 1] = 2
                                 self.gameMap[self.mapIdx][playerIdx] = 1
                                 if self.tapSound.isPlaying {
@@ -306,16 +306,35 @@ class gameViewController: UIViewController {
     @objc func updateUI() {
         //print("updateUI")
         for i in 0..<gameMap[self.mapIdx].count{
+            singleGridView[i].layer.contents = nil
             if gameMap[self.mapIdx][i] == 0 {
                 singleGridView[i].backgroundColor = UIColor(patternImage: UIImage(named:"bushes.gif")!)
             } else if gameMap[self.mapIdx][i] == 1 {
                 singleGridView[i].backgroundColor = UIColor.gray
             } else if gameMap[self.mapIdx][i] == 2 {
-                singleGridView[i].backgroundColor = UIColor.yellow
+                singleGridView[i].backgroundColor = UIColor.gray
+                var ninja = UIImage(named: "ninja.gif")
+                singleGridView[i].layer.contents = ninja?.cgImage
+//                singleGridView[i].backgroundColor = UIColor(patternImage: UIImage(named:"bushes.gif")!)
             } else if gameMap[self.mapIdx][i] == 3 {
-                singleGridView[i].backgroundColor = UIColor.green
-            } else if gameMap[self.mapIdx][i] == 4 {
-                singleGridView[i].backgroundColor = UIColor(patternImage: UIImage(named:"fire.gif")!)
+//                singleGridView[i].backgroundColor = UIColor.green
+                var belt = UIImage(named: "yellowbelt.png")
+                singleGridView[i].layer.contents = belt?.cgImage
+            } else if gameMap[self.mapIdx][i] == 8 {
+                singleGridView[i].backgroundColor = UIColor.black
+                var belt = UIImage(named: "redbelt.png")
+                singleGridView[i].layer.contents = belt?.cgImage
+            }
+            else if gameMap[self.mapIdx][i] == 9 {
+                singleGridView[i].backgroundColor = UIColor.white
+                var belt = UIImage(named: "blackbelt.png")
+                singleGridView[i].layer.contents = belt?.cgImage
+            }
+            else if gameMap[self.mapIdx][i] == 4 {
+//                singleGridView[i].backgroundColor = UIColor(patternImage: UIImage(named:"fire.gif")!)
+                var fire = UIImage(named: "fire.gif")
+                singleGridView[i].layer.contents = fire?.cgImage
+                
             }
         }
     }

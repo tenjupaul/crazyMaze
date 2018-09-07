@@ -105,6 +105,11 @@
 				TargetAttributes = {
 					62F9B34E2141DDD100155EB8 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -293,13 +298,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XDD3J5NMUK;
+				DEVELOPMENT_TEAM = 7KAF5S7P6Y;
 				INFOPLIST_FILE = crazyMaze/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tenjupaul.crazyMaze;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kimvyvo.crazyMaze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,13 +316,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XDD3J5NMUK;
+				DEVELOPMENT_TEAM = 7KAF5S7P6Y;
 				INFOPLIST_FILE = crazyMaze/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tenjupaul.crazyMaze;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kimvyvo.crazyMaze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

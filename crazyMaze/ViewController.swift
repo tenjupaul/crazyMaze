@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            let audioPath = Bundle.main.path(forResource: "imdabes", ofType: "mp3")
+            let audioPath = Bundle.main.path(forResource: "background", ofType: "mp3")
             try audio = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
         } catch {
             //process error

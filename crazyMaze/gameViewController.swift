@@ -85,28 +85,28 @@ class gameViewController: UIViewController {
         do {
             let tapSoundPath = Bundle.main.path(forResource: "latch_click", ofType: "mp3")
             try tapSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: tapSoundPath!) as URL)
-            tapSound.volume = 0.7
+            tapSound.volume = 1
         } catch {
             //process error
         }
         do {
             let crashSoundPath = Bundle.main.path(forResource: "crash", ofType: "mp3")
             try crashSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: crashSoundPath!) as URL)
-            crashSound.volume = 0.3
+            crashSound.volume = 0.7
         } catch {
             //process error
         }
         do {
             let failSoundPath = Bundle.main.path(forResource: "fail", ofType: "mp3")
             try failSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: failSoundPath!) as URL)
-            failSound.volume = 0.3
+            failSound.volume = 0.7
         } catch {
             //process error
         }
         do {
             let successSoundPath = Bundle.main.path(forResource: "success", ofType: "mp3")
             try successSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: successSoundPath!) as URL)
-            successSound.volume = 0.1
+            successSound.volume = 0.6
         } catch {
             //process error
         }

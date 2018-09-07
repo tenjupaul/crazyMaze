@@ -60,6 +60,7 @@ class gameViewController: UIViewController {
     var initialRoll: Double = 0.0
     var gameDelay = Timer()
     var tapSound = AVAudioPlayer()
+    var crashSound = AVAudioPlayer()
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -82,7 +83,14 @@ class gameViewController: UIViewController {
         do {
             let tapSoundPath = Bundle.main.path(forResource: "latch_click", ofType: "mp3")
             try tapSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: tapSoundPath!) as URL)
-            tapSound.volume = 1
+            tapSound.volume = 0.5
+        } catch {
+            //process error
+        }
+        do {
+            let crashSoundPath = Bundle.main.path(forResource: "crash", ofType: "mp3")
+            try crashSound = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: crashSoundPath!) as URL)
+            crashSound.volume = 0.5
         } catch {
             //process error
         }
@@ -232,7 +240,7 @@ class gameViewController: UIViewController {
                             self.tapSound.play()
                         }
                         
-                    } else if self.degrees(mydata.attitude.roll) > 30 && !self.gameOver {
+                    } else if self.degrees(mydata.attitude.roll) > 15 && !self.gameOver {
                         if playerIdx + 1 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 1] == 1 || self.gameMap[self.mapIdx][playerIdx + 1] == 3 || self.gameMap[self.mapIdx][playerIdx + 1] == 4) && playerIdx % 6 != 5 {
                             
                             if self.gameMap[self.mapIdx][playerIdx + 1] == 3 {
@@ -298,6 +306,7 @@ class gameViewController: UIViewController {
     func redAlert() {
         gameOver = true
         gameTimer.invalidate()
+        self.crashSound.play()
         let alert = UIAlertController(title: "BOOOOOO", message: "No touching red blocks!!!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Sure...", comment: "Default action"), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)

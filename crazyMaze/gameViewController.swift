@@ -40,7 +40,7 @@ class gameViewController: UIViewController {
          0,0,0,8,1,0,
          0,0,0,0,4,0],
         
-        [4,4,4,4,4,9,
+        [0,4,4,4,4,9,
          0,5,5,5,4,5,
          0,5,0,5,4,5,
          0,5,0,5,5,5,
@@ -459,19 +459,28 @@ class gameViewController: UIViewController {
         gameOver = true
         gameTimer.invalidate()
         self.successSound.play()
-        let alert = UIAlertController(title: "YOU WON", message: "You're NOT an idiot!!!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("NEXT LEVEL", comment: "Default action"), style: .default, handler: { _ in
-            self.mapIdx += 1
-            self.gameOver = false
-            self.newLevel = true
-            self.seconds = 10
-            self.timerLabel.text = "00:\(self.seconds)"
-            self.levelLabel.text = "LVL \(self.mapIdx + 1)"
-            self.gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.setTimer), userInfo: nil, repeats: true)
-            self.gameDelay = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.startReadingMotionData), userInfo: nil, repeats: false)
-            self.updateUI()
-        }))
-        self.present(alert, animated: true, completion: nil)
+        if mapIdx == 2 {
+            let alert = UIAlertController(title: "YOU WON", message: "You're NOT an idiot!!!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("NEXT LEVEL", comment: "Default action"), style: .default, handler: { _ in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: "Good job!", message: "Head to the next level!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("NEXT LEVEL", comment: "Default action"), style: .default, handler: { _ in
+                self.mapIdx += 1
+                self.gameOver = false
+                self.newLevel = true
+                self.seconds = 10
+                self.timerLabel.text = "00:\(self.seconds)"
+                self.levelLabel.text = "LVL \(self.mapIdx + 1)"
+                self.gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.setTimer), userInfo: nil, repeats: true)
+                self.gameDelay = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.startReadingMotionData), userInfo: nil, repeats: false)
+                self.updateUI()
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func redAlert() {
@@ -481,6 +490,10 @@ class gameViewController: UIViewController {
         let alert = UIAlertController(title: "BOOOOOO", message: "No touching red blocks!!!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Sure...", comment: "Default action"), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func victoryAlert() {
+        
     }
     
     @objc func updateUI() {
@@ -495,30 +508,30 @@ class gameViewController: UIViewController {
                 singleGridView[i].backgroundColor = UIColor.gray
             }else if gameMap[self.mapIdx][i] == 5 {
 //                singleGridView[i].backgroundColor = UIColor.cyan
-                var fire = UIImage(named: "bluefire.jpeg")
+                let fire = UIImage(named: "bluefire.jpeg")
                 singleGridView[i].layer.contents = fire?.cgImage
             } else if gameMap[self.mapIdx][i] == 2 {
                 singleGridView[i].backgroundColor = UIColor.gray
-                var ninja = UIImage(named: "ninja.gif")
+                let ninja = UIImage(named: "ninja.gif")
                 singleGridView[i].layer.contents = ninja?.cgImage
                 //                singleGridView[i].backgroundColor = UIColor(patternImage: UIImage(named:"bushes.gif")!)
             } else if gameMap[self.mapIdx][i] == 3 {
                 //                singleGridView[i].backgroundColor = UIColor.green
-                var belt = UIImage(named: "yellowbelt.png")
+                let belt = UIImage(named: "yellowbelt.png")
                 singleGridView[i].layer.contents = belt?.cgImage
             } else if gameMap[self.mapIdx][i] == 8 {
                 singleGridView[i].backgroundColor = UIColor.black
-                var belt = UIImage(named: "redbelt.png")
+                let belt = UIImage(named: "redbelt.png")
                 singleGridView[i].layer.contents = belt?.cgImage
             }
             else if gameMap[self.mapIdx][i] == 9 {
                 singleGridView[i].backgroundColor = UIColor.white
-                var belt = UIImage(named: "blackbelt.png")
+                let belt = UIImage(named: "blackbelt.png")
                 singleGridView[i].layer.contents = belt?.cgImage
             }
             else if gameMap[self.mapIdx][i] == 4 {
                 //                singleGridView[i].backgroundColor = UIColor(patternImage: UIImage(named:"fire.gif")!)
-                var fire = UIImage(named: "fire.gif")
+                let fire = UIImage(named: "fire.gif")
                 singleGridView[i].layer.contents = fire?.cgImage
                 
             }

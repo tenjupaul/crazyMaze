@@ -461,7 +461,7 @@ class gameViewController: UIViewController {
         self.successSound.play()
         if mapIdx == 2 {
             let alert = UIAlertController(title: "YOU WON", message: "You're NOT an idiot!!!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("NEXT LEVEL", comment: "Default action"), style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("EZ WIN", comment: "Default action"), style: .default, handler: { _ in
                 self.dismiss(animated: true, completion: nil)
             }))
             self.present(alert, animated: true, completion: nil)
@@ -487,7 +487,7 @@ class gameViewController: UIViewController {
         gameOver = true
         gameTimer.invalidate()
         self.crashSound.play()
-        let alert = UIAlertController(title: "BOOOOOO", message: "No touching red blocks!!!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "BOOOOOO", message: "No touching fire!!!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Sure...", comment: "Default action"), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

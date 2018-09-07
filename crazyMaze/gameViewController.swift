@@ -174,7 +174,7 @@ class gameViewController: UIViewController {
                     
                     // forward backward
                     if self.degrees(mydata.attitude.pitch) < 0 && !self.gameOver {
-                        if playerIdx - 6 >= 0 && (self.gameMap[self.mapIdx][playerIdx - 6] == 1 || self.gameMap[self.mapIdx][playerIdx - 6] == 3 || self.gameMap[self.mapIdx][playerIdx - 6] == 4 || self.gameMap[self.mapIdx][playerIdx - 6] == 5 || self.gameMap[self.mapIdx][playerIdx - 6] == 6) {
+                        if playerIdx - 6 >= 0 && (self.gameMap[self.mapIdx][playerIdx - 6] == 1 || self.gameMap[self.mapIdx][playerIdx - 6] == 3 || self.gameMap[self.mapIdx][playerIdx - 6] == 4 || self.gameMap[self.mapIdx][playerIdx - 6] == 5 || self.gameMap[self.mapIdx][playerIdx - 6] == 6 || self.gameMap[self.mapIdx][playerIdx - 6] == 7) {
                             
                             if self.gameMap[self.mapIdx][playerIdx - 6] == 3 {
                                 self.gameMap[self.mapIdx][playerIdx - 6] = 2
@@ -242,7 +242,7 @@ class gameViewController: UIViewController {
                             
                         }
                     } else if self.degrees(mydata.attitude.pitch) > 30 && !self.gameOver {
-                        if playerIdx + 6 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 6] == 1 || self.gameMap[self.mapIdx][playerIdx + 6] == 3 || self.gameMap[self.mapIdx][playerIdx + 6] == 4 || self.gameMap[self.mapIdx][playerIdx + 6] == 5 || self.gameMap[self.mapIdx][playerIdx + 6] == 6) {
+                        if playerIdx + 6 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 6] == 1 || self.gameMap[self.mapIdx][playerIdx + 6] == 3 || self.gameMap[self.mapIdx][playerIdx + 6] == 4 || self.gameMap[self.mapIdx][playerIdx + 6] == 5 || self.gameMap[self.mapIdx][playerIdx + 6] == 6 || self.gameMap[self.mapIdx][playerIdx + 6] == 7) {
                             
                             if self.gameMap[self.mapIdx][playerIdx + 6] == 3 {
                                 self.gameMap[self.mapIdx][playerIdx + 6] = 2
@@ -309,7 +309,7 @@ class gameViewController: UIViewController {
                             }
                         }
                     }   else if self.degrees(mydata.attitude.roll) < 0 && !self.gameOver {
-                        if playerIdx - 1 >= 0 && (self.gameMap[self.mapIdx][playerIdx - 1] == 1 || self.gameMap[self.mapIdx][playerIdx - 1] == 3 || self.gameMap[self.mapIdx][playerIdx - 1] == 4 || self.gameMap[self.mapIdx][playerIdx - 1] == 5 || self.gameMap[self.mapIdx][playerIdx - 1] == 6) && playerIdx % 6 != 0 {
+                        if playerIdx - 1 >= 0 && (self.gameMap[self.mapIdx][playerIdx - 1] == 1 || self.gameMap[self.mapIdx][playerIdx - 1] == 3 || self.gameMap[self.mapIdx][playerIdx - 1] == 4 || self.gameMap[self.mapIdx][playerIdx - 1] == 5 || self.gameMap[self.mapIdx][playerIdx - 1] == 6 || self.gameMap[self.mapIdx][playerIdx - 1] == 7) && playerIdx % 6 != 0 {
                             
                             if self.gameMap[self.mapIdx][playerIdx - 1] == 3 {
                                 self.gameMap[self.mapIdx][playerIdx - 1] = 2
@@ -378,7 +378,7 @@ class gameViewController: UIViewController {
                         }
                         
                     } else if self.degrees(mydata.attitude.roll) > 15 && !self.gameOver {
-                        if playerIdx + 1 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 1] == 1 || self.gameMap[self.mapIdx][playerIdx + 1] == 3 || self.gameMap[self.mapIdx][playerIdx + 1] == 4 || self.gameMap[self.mapIdx][playerIdx + 1] == 5 || self.gameMap[self.mapIdx][playerIdx + 1] == 6) && playerIdx % 6 != 5 {
+                        if playerIdx + 1 <= 47 && (self.gameMap[self.mapIdx][playerIdx + 1] == 1 || self.gameMap[self.mapIdx][playerIdx + 1] == 3 || self.gameMap[self.mapIdx][playerIdx + 1] == 4 || self.gameMap[self.mapIdx][playerIdx + 1] == 5 || self.gameMap[self.mapIdx][playerIdx + 1] == 6 || self.gameMap[self.mapIdx][playerIdx + 1] == 7) && playerIdx % 6 != 5 {
                             
                             if self.gameMap[self.mapIdx][playerIdx + 1] == 3 {
                                 self.gameMap[self.mapIdx][playerIdx + 1] = 2

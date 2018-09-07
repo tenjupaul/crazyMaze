@@ -47,6 +47,7 @@ class gameViewController: UIViewController {
     var seconds: Int = 10
     var initialPitch:Double=0.0
     var initialRoll:Double=0.0
+    var gameDelay = Timer()
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -60,7 +61,7 @@ class gameViewController: UIViewController {
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.setTimer), userInfo: nil, repeats: true)
         if motionManager.isDeviceMotionAvailable {
             print("We can detect device motion")
-            startReadingMotionData()
+            gameDelay = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.startReadingMotionData), userInfo: nil, repeats: false)
         }
         else {
             print("We cannot detect device motion")
@@ -87,7 +88,7 @@ class gameViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func startReadingMotionData() {
+    @objc func startReadingMotionData() {
         // set read speed
         motionManager.deviceMotionUpdateInterval = 0.1
         // start reading
@@ -197,6 +198,7 @@ class gameViewController: UIViewController {
             self.timerLabel.text = "00:\(self.seconds)"
             self.levelLabel.text = "LVL \(self.mapIdx + 1)"
             self.gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.setTimer), userInfo: nil, repeats: true)
+            self.gameDelay = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(gameViewController.startReadingMotionData), userInfo: nil, repeats: false)
             self.updateUI()
         }))
         self.present(alert, animated: true, completion: nil)
